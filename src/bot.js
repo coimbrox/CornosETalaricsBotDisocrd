@@ -19,7 +19,9 @@ client.on('message', async (message) => {
   //filtro
   if (message.author.bot) return;
 
-
+  if (!message.member.voice.channel) {
+    message.channel.send('Seu corno, entra num canal antes de pedir a música!')
+  }
   //comandos
   if (message.content === PREFIX + 'join') {  //fazer entrar no canal de voz
     servers.server.connection = await message.member.voice.channel.join();
