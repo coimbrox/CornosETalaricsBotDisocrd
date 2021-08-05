@@ -4,6 +4,7 @@ const { Client } = require('discord.js');
 const client = new Client();
 const ytdl = require('ytdl-core');
 const PREFIX = "!"
+
 const servers = {
   'server': {
     connection: null,
@@ -27,10 +28,16 @@ client.on('message', async (message) => {
   if (message.content === PREFIX + 'join') {  //fazer entrar no canal de voz
     servers.server.connection = await message.member.voice.channel.join();
   }
-  //play
-  if (message.content === PREFIX + 'play') {
+  //!play
+  if (message.content.startsWith(PREFIX + 'play')) {
+    let ytMusic = message.content.slice(6)
+    if (ytdl.validateURL(ytMusic)) {
+      servers.server.dispatcher = servers.server.connection.play(ytdl(ytMusic));
+    } else {
+      message.channel.send('Link Inválido Desgraça, Bota um Bagulho Certo!')
+    }
 
-    servers.server.connection.play(ytdl('https://www.youtube.com/watch?v=paYdjXDYX4U&ab_channel=FilipeRet'));
+
   }
 
   if (message.content.startsWith(PREFIX)) {
