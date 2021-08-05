@@ -24,10 +24,16 @@ client.on('message', async (message) => {
   if (!message.member.voice.channel) {
     message.channel.send('Seu corno, entra num canal antes de pedir a música!')
   }
-  //comandos
+  //!join
   if (message.content === PREFIX + 'join') {  //fazer entrar no canal de voz
     servers.server.connection = await message.member.voice.channel.join();
   }
+
+  //!leave
+  if (message.content === PREFIX + 'leave') {  //fazer entrar no canal de voz
+    !message.member.voice.channel.leave()
+  }
+
   //!play
   if (message.content.startsWith(PREFIX + 'play')) {
     let ytMusic = message.content.slice(6)
@@ -36,8 +42,14 @@ client.on('message', async (message) => {
     } else {
       message.channel.send('Link Inválido Desgraça, Bota um Bagulho Certo!')
     }
-
-
+  }
+  //!pause
+  if (message.content === PREFIX + 'pause') {
+    servers.server.dispatcher.pause();
+  }
+  //!resume - voltar a pausa
+  if (message.content === PREFIX + 'resume') {
+    servers.server.dispatcher.resume();
   }
 
   if (message.content.startsWith(PREFIX)) {
