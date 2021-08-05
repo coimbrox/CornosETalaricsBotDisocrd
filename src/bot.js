@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const { Client } = require('discord.js');
 const client = new Client();
+const ytdl = require('ytdl-core');
 const PREFIX = "!"
 const servers = {
   'server': {
@@ -28,7 +29,8 @@ client.on('message', async (message) => {
   }
   //play
   if (message.content === PREFIX + 'play') {
-    servers.server.connection.play('./teste.mp3');
+
+    servers.server.connection.play(ytdl('https://www.youtube.com/watch?v=paYdjXDYX4U&ab_channel=FilipeRet'));
   }
 
   if (message.content.startsWith(PREFIX)) {
