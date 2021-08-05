@@ -5,6 +5,10 @@ const client = new Client();
 const ytdl = require('ytdl-core');
 const PREFIX = "!"
 
+const ytdlOptions = {
+  filter: 'audioonly'
+}
+
 const servers = {
   'server': {
     connection: null,
@@ -26,7 +30,14 @@ client.on('message', async (message) => {
   }
   //!join
   if (message.content === PREFIX + 'join') {  //fazer entrar no canal de voz
-    servers.server.connection = await message.member.voice.channel.join();
+    try {
+      servers.server.connection = await message.member.voice.channel.join();
+    } catch (err) {
+      console.log('Deu erro po')
+      console.log(err);
+    }
+
+
   }
 
   //!leave
@@ -40,7 +51,7 @@ client.on('message', async (message) => {
   if (message.content.startsWith(PREFIX + 'play')) {
     let ytMusic = message.content.slice(6)
     if (ytdl.validateURL(ytMusic)) {
-      servers.server.dispatcher = servers.server.connection.play(ytdl(ytMusic));
+      servers.server.dispatcher = servers.server.connection.play(ytdl(ytMusic, ytdlOptions));
     } else {
       message.channel.send('Link Inválido Desgraça, Bota um Bagulho Certo!')
     }
