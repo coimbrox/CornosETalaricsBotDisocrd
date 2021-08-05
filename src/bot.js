@@ -31,7 +31,9 @@ client.on('message', async (message) => {
 
   //!leave
   if (message.content === PREFIX + 'leave') {  //fazer entrar no canal de voz
-    !message.member.voice.channel.leave()
+    message.member.voice.channel.leave()
+    servers.server.connection = null;
+    servers.server.dispatcher = null;
   }
 
   //!play
