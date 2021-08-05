@@ -3,6 +3,12 @@ require('dotenv').config();
 const { Client } = require('discord.js');
 const client = new Client();
 const PREFIX = "!"
+const servers = {
+  'server': {
+    connection: null,
+    dispatcher: null
+  }
+}
 
 client.on('ready', () => {
   console.log(`${client.user.username} chegou pra talaricar, ou ser corno ¯\_(ツ)_/¯`)
@@ -16,9 +22,12 @@ client.on('message', async (message) => {
 
   //comandos
   if (message.content === PREFIX + 'join') {  //fazer entrar no canal de voz
-    await message.member.voice.channel.join();
+    servers.server.connection = await message.member.voice.channel.join();
   }
-
+  //play
+  if (message.content === PREFIX + 'play') {
+    servers.server.connection.play('./teste.mp3');
+  }
 
   if (message.content.startsWith(PREFIX)) {
     const [CMD_NAME, ...args] = message.content
