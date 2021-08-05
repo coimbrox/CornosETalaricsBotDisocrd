@@ -10,7 +10,16 @@ client.on('ready', () => {
 })
 
 client.on('message', async (message) => {
+  //filtro
   if (message.author.bot) return;
+
+
+  //comandos
+  if (message.content === PREFIX + 'join') {  //fazer entrar no canal de voz
+    await message.member.voice.channel.join();
+  }
+
+
   if (message.content.startsWith(PREFIX)) {
     const [CMD_NAME, ...args] = message.content
       .trim()
