@@ -1,22 +1,21 @@
 {
-  "name": "BotDiscord",
+  "name": "CornosETalaricsBot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "start": "node ./src/bot.js",
-    "dev": "nodemon ./src/bot.js"
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Coimbrox",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/opus": "^0.5.3",
-    "discord.js": "^12.5.3",
-    "dotenv": "^10.0.0",
-    "ffmpeg-static": "^4.4.0",
-    "nodemon": "^2.0.12",
-    "ytdl-core": "^4.9.1"
+    "@discordjs/opus": "^0.3.3",
+    "discord.js": "^12.5.1",
+    "ffmpeg": "0.0.4",
+    "ffmpeg-static": "^4.2.7",
+    "fluent-ffmpeg": "^2.1.2",
+    "ytdl-core": "^4.1.4"
   }
 }
