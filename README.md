@@ -1,10 +1,10 @@
-# Music-Discord-bot
-Discord music bot that actually works, just put your personal bot token and set your prefix in config.json and it will be ready to go!
+# Talarics Bot
+Estágio 1 de desenvolvimento bot discord
 
-Commands that you can use: 
+Comando para usar 
 
-{prefix}play (your youtube link here); 
+!play (Seu Link Youtube); 
 
-{prefix}skip;
+!skip;
 
-{prefix}stop;
+!stop;
